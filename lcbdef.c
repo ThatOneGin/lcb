@@ -1,4 +1,4 @@
-#include "lcb.h"
+#include "lcblib.h"
 #include <lua.h>
 #include <ncurses.h>
 
