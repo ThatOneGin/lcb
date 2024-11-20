@@ -136,4 +136,4 @@ lcb.A_ALTCHARSET = lcb.A_ALTCHARSET
 ---@type integer
 lcb.A_CHARTEXT   = lcb.A_CHARTEXT
 
-return lcb
+return require("lcblib")

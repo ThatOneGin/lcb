@@ -9,4 +9,13 @@ Lua curses bindings
 * 1. clone the repo and compile using ```make``` command.
 * 2. and then, include the ```lcb.lua``` and the ```lcblib.so``` in whatever folder you want.
 
+Example:
+
+```lua
+lcb = require("lcblib")
+lcb.initscr()
+lcb.getch()
+lcb.endwin()
+```
+
 You dont have to worry about of a misspelling a variable/function name as it has auto completion for some editors.
