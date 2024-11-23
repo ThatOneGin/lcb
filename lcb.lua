@@ -84,8 +84,25 @@ function lcb.move(x, y) end
 function lcb.getmaxyx(LINES, COLS) end
 
 ---Activates attribute to the stdscr.
----@param attr unknown
+---@param attr integer
 function lcb.attron(attr) end
+
+---Deactivates attribute of the stdscr
+---@param attr integer
+function lcb.attroff(attr) end
+
+---Activate given color pair
+---@param p integer
+function lcb.COLOR_PAIR(p) end
+
+---Disable cbreak
+function lcb.nocbreak() end
+
+---Clear the terminal window
+function lcb.clear() end
+
+---Refresh the terminal window
+function lcb.refresh() end
 
 --[[
 colors, attributes and keys just for the autocomplete of some editors.

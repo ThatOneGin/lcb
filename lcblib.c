@@ -15,7 +15,7 @@ static WINDOW *towin(lua_State *L, int i) {
 static int l_initscr(lua_State *L) {
   initscr();
 	start_color();
-  has_colors();
+
   lua_getfield(L, LUA_REGISTRYINDEX, "lcb");
   lua_pushlightuserdata(L, stdscr);
   lua_setfield(L, -2, "stdscr");
@@ -24,7 +24,7 @@ static int l_initscr(lua_State *L) {
 	lua_setfield(L, -2, "LINES");
 
 	lua_pushinteger(L, COLS);
-	lua_setfield(L, -2, "COLUMNS");
+	lua_setfield(L, -2, "COLS");
   return 0;
 }
 
@@ -131,6 +131,33 @@ static int l_attron(lua_State *L) {
 	return 0;
 }
 
+static int l_attroff(lua_State *L) {
+  int attr = luaL_checkinteger(L, -1);
+	attroff(attr);
+	return 0;
+}
+
+static int l_COLOR_PAIR(lua_State *L) {
+  int p = luaL_checkinteger(L, -1);
+  COLOR_PAIR(p);
+  return 0;
+}
+
+static int l_nocbreak() {
+  nocbreak();
+  return 0;
+}
+
+static int l_refresh() {
+  refresh();
+  return 0;
+}
+
+static int l_clear() {
+  clear();
+  return 0;
+}
+
 static luaL_Reg lcbl[] = {
 {"initscr", l_initscr},   
 {"endwin", l_endwin},
@@ -149,6 +176,11 @@ static luaL_Reg lcbl[] = {
 {"move", l_move},
 {"getmaxyx", l_getmaxyx},
 {"attron", l_attron},
+{"attroff", l_attroff},
+{"COLOR_PAIR", l_COLOR_PAIR},
+{"nocbreak", l_nocbreak},
+{"clear", l_clear},
+{"refresh", l_refresh},
 {NULL, NULL}
 };
 
